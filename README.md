@@ -1,5 +1,7 @@
 # unix-utils-rs
 
-[x] `cat`
+[x] `cat` (no options)
+
+[x] `ls` (no options)
 
 [] `wc`
