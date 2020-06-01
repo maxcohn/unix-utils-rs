@@ -2,7 +2,7 @@
 
 - [x] `cat`
 - [x] `ls`
-- [ ] `wc`
+- [x] `wc`
 - [x] `seq`
 - [x] `yes`
 - [x] `echo`
