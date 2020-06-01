@@ -5,3 +5,6 @@
 - [ ] `wc`
 - [x] `seq`
 - [x] `yes`
+- [x] `echo`
+- [x] `netcat`
+- [x] `strings`
