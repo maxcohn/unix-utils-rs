@@ -3,5 +3,5 @@
 - [x] `cat`
 - [x] `ls`
 - [ ] `wc`
-- [ ] `seq`
+- [x] `seq`
 - [x] `yes`
