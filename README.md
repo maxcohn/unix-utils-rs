@@ -7,6 +7,7 @@
 - [x] `seq`
 - [x] `strings`
 - [x] `wc`
+- [x] `uniq`
 - [x] `yes`
 
 - [ ] `cp`
@@ -20,7 +21,6 @@
 - [ ] `tee`   
 - [ ] `time`   
 - [ ] `touch`
-- [ ] `uniq`
 - [ ] `which`
 
 
