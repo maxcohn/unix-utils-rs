@@ -1,6 +1,6 @@
 use std::fs;
 
-use clap::{App, Arg, AppSettings};
+use clap::{App, AppSettings, Arg};
 
 struct CmdOptions {
     all: bool,
@@ -32,25 +32,25 @@ fn main() {
 fn parse_cli() -> (CmdOptions, Vec<String>) {
     let matches = App::new("ls")
         .setting(AppSettings::TrailingVarArg)
-        .arg(Arg::with_name("all")
-            .short("a")
-            .long("all")
-            .help("Shows hidden files"))
-        .arg(Arg::with_name("long listing")
-            .short("l")
-            .help("Use a long listing format"))
-        .arg(Arg::with_name("inputs")
-            .multiple(true)
-            .required(false)
+        .arg(
+            Arg::with_name("all")
+                .short("a")
+                .long("all")
+                .help("Shows hidden files"),
         )
+        .arg(
+            Arg::with_name("long listing")
+                .short("l")
+                .help("Use a long listing format"),
+        )
+        .arg(Arg::with_name("inputs").multiple(true).required(false))
         .get_matches();
 
-    
     let inputs: Vec<String> = match matches.values_of("inputs") {
         Some(vals) => vals.map(|s| String::from(s)).collect(),
         None => vec![],
     };
-        
+
     let opts = CmdOptions {
         all: matches.is_present("all"),
         long_listing: matches.is_present("long listing"),
@@ -74,7 +74,6 @@ fn print_dir(dir: &str, opts: &CmdOptions) {
         }
 
         let meta = entry.metadata().unwrap();
-        
 
         // print the file/directory
         if meta.is_dir() {

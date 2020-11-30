@@ -13,7 +13,6 @@ fn count_file(file_path: &str) {
     let mut reader = BufReader::new(f);
     let mut buffer: [u8; BUFFER_SIZE] = [0; BUFFER_SIZE];
 
-
     let mut char_count = 0;
     let mut word_count = 0;
     let mut line_count = 0;
@@ -21,8 +20,8 @@ fn count_file(file_path: &str) {
     let mut in_word = false;
 
     while let Ok(bytes_read) = reader.read(&mut buffer) {
-        
-        let contents = std::str::from_utf8(&buffer).expect(&format!("Error reading file: {}", file_path));
+        let contents =
+            std::str::from_utf8(&buffer).expect(&format!("Error reading file: {}", file_path));
         println!("{}", contents);
         for (i, c) in contents.chars().enumerate() {
             if i >= bytes_read {

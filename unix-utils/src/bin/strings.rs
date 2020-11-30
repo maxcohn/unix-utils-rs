@@ -1,7 +1,6 @@
-use std::io::Read;
-use std::fs::File;
 use std::env;
-
+use std::fs::File;
+use std::io::Read;
 
 const BUFFER_SIZE: usize = 1024 * 1024;
 
@@ -32,7 +31,6 @@ fn main() {
             if is_printable(*b) {
                 cur_str[str_counter] = *b;
                 str_counter += 1;
-                
             } else {
                 // if the character isn't printable, check if we found a long
                 // enough string to print
@@ -46,10 +44,8 @@ fn main() {
                 // reset counter
                 str_counter = 0;
             }
-            
         }
         // refill the buffer with next bytes
         bytes_read = file.read(&mut buffer).unwrap();
     }
-
 }
