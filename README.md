@@ -6,6 +6,7 @@
 - [x] `netcat`
 - [x] `seq`
 - [x] `strings`
+- [x] `tee`   
 - [x] `wc`
 - [x] `uniq`
 - [x] `yes`
@@ -18,7 +19,6 @@
 - [ ] `sleep`
 - [ ] `sort`
 - [ ] `tail`   
-- [ ] `tee`   
 - [ ] `time`   
 - [ ] `touch`
 - [ ] `which`
