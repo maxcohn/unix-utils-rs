@@ -5,6 +5,7 @@
 - [x] `ls`
 - [x] `netcat`
 - [x] `seq`
+- [x] `sleep`
 - [x] `strings`
 - [x] `tee`   
 - [x] `wc`
@@ -16,7 +17,6 @@
 - [ ] `head`   
 - [ ] `mv`
 - [ ] `rm`
-- [ ] `sleep`
 - [ ] `sort`
 - [ ] `tail`   
 - [ ] `time`   

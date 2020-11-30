@@ -1,6 +1,6 @@
-use std::fs::File;
-use std::io::{stdin, stdout, Write, BufReader, BufWriter, BufRead};
 use std::env;
+use std::fs::File;
+use std::io::{stdin, stdout, BufRead, BufReader, BufWriter, Write};
 
 //TODO: add flags, like -a
 fn main() {
