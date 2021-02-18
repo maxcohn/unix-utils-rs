@@ -1,22 +1,30 @@
 use std::fs;
 
+use structopt::StructOpt;
 use clap::{App, AppSettings, Arg};
 
-struct CmdOptions {
-    all: bool,
+#[derive(StructOpt, Debug)]
+struct Opt {
 
-    //TODO: make use of -l option at some point. currently metadata.permissions() is limited in what it shows
+    #[structopt(short)]
+    all: bool,
+    
+    #[structopt(short)]
     long_listing: bool,
+
+    files: Vec<String>,
 }
 
 fn main() {
-    let (opts, mut inputs) = parse_cli();
+    let mut opts = Opt::from_args();
+    println!("{:?}", opts);
 
-    if inputs.len() == 0 {
-        inputs.push(String::from("."));
+    if opts.files.len() == 0 {
+        opts.files.push(String::from("."));
     }
+    println!("{:?}", opts);
 
-    for arg in inputs {
+    for arg in &opts.files {
         let meta = fs::metadata(&arg).expect(format!("Couldn't access file '{}'.", arg).as_str());
 
         // if the argument is a file, print the name
@@ -29,37 +37,7 @@ fn main() {
     }
 }
 
-fn parse_cli() -> (CmdOptions, Vec<String>) {
-    let matches = App::new("ls")
-        .setting(AppSettings::TrailingVarArg)
-        .arg(
-            Arg::with_name("all")
-                .short("a")
-                .long("all")
-                .help("Shows hidden files"),
-        )
-        .arg(
-            Arg::with_name("long listing")
-                .short("l")
-                .help("Use a long listing format"),
-        )
-        .arg(Arg::with_name("inputs").multiple(true).required(false))
-        .get_matches();
-
-    let inputs: Vec<String> = match matches.values_of("inputs") {
-        Some(vals) => vals.map(|s| String::from(s)).collect(),
-        None => vec![],
-    };
-
-    let opts = CmdOptions {
-        all: matches.is_present("all"),
-        long_listing: matches.is_present("long listing"),
-    };
-
-    (opts, inputs)
-}
-
-fn print_dir(dir: &str, opts: &CmdOptions) {
+fn print_dir(dir: &str, opts: &Opt) {
     // if the argument is a directory, print it's contents
     let dir_contents = std::fs::read_dir(dir).expect("Can't access the current directory.");
 
