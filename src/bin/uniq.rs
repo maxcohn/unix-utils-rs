@@ -8,7 +8,8 @@ fn uniq<R: Read, W: Write>(input: R, output: W) {
 
     let mut line_iter = reader.lines();
     let mut prev_line = line_iter.next().unwrap().unwrap();
-    write!(&mut writer, "{}\n", prev_line);
+    
+    write!(&mut writer, "{}\n", prev_line).expect("Failed to write");
 
     for line in line_iter {
         let line = match line {
@@ -20,7 +21,7 @@ fn uniq<R: Read, W: Write>(input: R, output: W) {
             continue;
         }
 
-        write!(&mut writer, "{}\n", line);
+        write!(&mut writer, "{}\n", line).expect("Failed to write");
         prev_line = line;
     }
 }

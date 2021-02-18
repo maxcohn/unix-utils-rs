@@ -11,7 +11,7 @@ fn main() {
         exit(1);
     }
 
-    let sleep_time: f64 = args.get(0).unwrap().parse().unwrap();
+    let sleep_time: f64 = args.get(0).unwrap().parse().unwrap();//unwrap().parse().unwrap();
 
     let dur = time::Duration::from_secs_f64(sleep_time);
 

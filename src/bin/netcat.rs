@@ -4,6 +4,8 @@ use std::io::{BufRead, BufReader};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 
+//TODO: change to using StructOpt
+
 fn main() -> std::io::Result<()> {
     // get command line arguments
     let matches = App::new("netcat")

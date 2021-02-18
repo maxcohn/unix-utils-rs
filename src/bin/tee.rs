@@ -20,8 +20,8 @@ fn main() {
     for line in input.lines() {
         let line = line.unwrap();
         for w in &mut writers {
-            write!(w, "{}\n", line);
+            write!(w, "{}\n", line).expect("Failed to write to file");
         }
-        write!(output, "{}\n", line);
+        write!(output, "{}\n", line).expect("Failed to write to stdout");
     }
 }
