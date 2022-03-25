@@ -1,16 +1,32 @@
-use clap::{App, AppSettings, Arg};
 use std::io::prelude::*;
 use std::io::{BufRead, BufReader};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 
+use clap::{Parser, App, AppSettings, Arg};
+
+
 //TODO: change to using StructOpt
+
+/*
+#[derive(Parser, Debug)]
+struct Opt {
+
+    #[structopt(short)]
+    all: bool,
+    
+    #[structopt(short)]
+    long_listing: bool,
+
+    files: Vec<String>,
+}
+*/
 
 fn main() -> std::io::Result<()> {
     // get command line arguments
     let matches = App::new("netcat")
         .setting(AppSettings::AllowMissingPositional)
-        .arg(Arg::with_name("listen").short("l").long("listen"))
+        .arg(Arg::with_name("listen").short('l').long("listen"))
         .arg(Arg::with_name("ip"))
         .arg(Arg::with_name("port").required(true))
         .get_matches();

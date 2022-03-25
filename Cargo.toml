@@ -7,6 +7,4 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-structopt = { version = "0.3", default-features = true } #maybe change to false??
-#TODO: remove in favor for the above StructOpt
-clap = "2.33.0"
+clap = { version = "3.1.6", features = ["derive"] }

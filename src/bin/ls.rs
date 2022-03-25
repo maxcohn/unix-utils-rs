@@ -1,9 +1,8 @@
 use std::fs;
 
-use structopt::StructOpt;
-use clap::{App, AppSettings, Arg};
+use clap::Parser;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 struct Opt {
 
     #[structopt(short)]
@@ -16,7 +15,7 @@ struct Opt {
 }
 
 fn main() {
-    let mut opts = Opt::from_args();
+    let mut opts = Opt::parse();
     println!("{:?}", opts);
 
     if opts.files.len() == 0 {
@@ -47,7 +46,7 @@ fn print_dir(dir: &str, opts: &Opt) {
         let filename = entry.file_name().into_string().unwrap();
 
         // check if the file is hidden
-        if !opts.all && filename.chars().nth(0).unwrap() == '.' {
+        if !opts.all && filename.chars().nth(0) == Some('.') {
             continue;
         }
 
